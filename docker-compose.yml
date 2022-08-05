@@ -34,7 +34,7 @@ services:
       - ./data-nodes/data1/data:/var/lib/influxdb/data/1
       - ./data-nodes/data2/data:/var/lib/influxdb/data/2
   meta-node1:
-    image: influxdb:meta
+    image: influxdb:1.9.8-meta
     container_name: meta1
     volumes:
       - /var/lib/influxdb
@@ -51,7 +51,7 @@ services:
     - "18091:8091"
 
   meta-node2:
-    image: influxdb:meta
+    image: influxdb:1.9.8-meta
     container_name: meta2
     volumes:
   # Mount meta directory
@@ -68,7 +68,7 @@ services:
 
   meta-node3:
     container_name: meta3
-    image: influxdb:meta
+    image: influxdb:1.9.8-meta
     volumes:
       - /var/lib/influxdb
       - ./meta-nodes/config/:/etc/influxdb
@@ -83,7 +83,7 @@ services:
 
   # Data nodes
   data-node1:
-    image: influxdb:data
+    image: influxdb:1.9.8-data
     container_name: data1
     volumes:
       - /var/lib/influxdb/
@@ -99,7 +99,7 @@ services:
       - "8086"
 
   data-node2:
-    image: influxdb:data
+    image: influxdb:1.9.8-data
     container_name: data2
     volumes:
       - /var/lib/influxdb/
@@ -116,7 +116,7 @@ services:
 
   influxdb-monitor:
   # Full tag list: https://hub.docker.com/r/library/influxdb/tags/
-    image: influxdb:1.7.7
+    image: influxdb:1.8.10
     container_name: influxdb-monitor
     volumes:
     # Mount for influxdb data directory
